@@ -1,8 +1,9 @@
 import { useState } from "react";
-import type { Todo } from "../App";
+import type { NewTodo } from "../App";
 
 interface TodoFormProps {
-  addTodo: (data: Pick<Todo, "title" | "description">) => void;
+  // A function that receives NewTodo and returns no value
+  addTodo: (data: NewTodo) => void;
 }
 
 function TodoForm({ addTodo }: TodoFormProps) {
@@ -10,13 +11,16 @@ function TodoForm({ addTodo }: TodoFormProps) {
   const [description, setDescription] = useState<string>("");
 
   const handleAdd = () => {
+    // Do nothing if the title is empty
     if (!title.trim()) return;
 
+    // Send title and description to App
     addTodo({
       title,
       description,
     });
 
+    // Clear both inputs after adding
     setTitle("");
     setDescription("");
   };
@@ -25,7 +29,7 @@ function TodoForm({ addTodo }: TodoFormProps) {
     <div className="todo-form">
       <input
         type="text"
-        placeholder="Titel"
+        placeholder="Title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />

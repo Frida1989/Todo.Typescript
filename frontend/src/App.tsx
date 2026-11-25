@@ -71,19 +71,19 @@ function App() {
     setTodos(newTodos);
   }
 
-  function editTodo({ todoId, updatedData }: EditTodoInput) {
-    const updatedTodos = todos.map((todo) => {
-      if (todo.todoId === todoId) {
-        return {
-          ...todo,
-          ...updatedData,
-        };
-      }
-      return todo;
-    });
+  // function editTodo({ todoId, updatedData }: EditTodoInput) {
+  //   const updatedTodos = todos.map((todo) => {
+  //     if (todo.todoId === todoId) {
+  //       return {
+  //         ...todo,
+  //         ...updatedData,
+  //       };
+  //     }
+  //     return todo;
+  //   });
 
-    setTodos(updatedTodos);
-  }
+  //   setTodos(updatedTodos);
+  // }
 
   function completeTodo(todoId: number) {
     const newTodos = todos.map((todo) => {

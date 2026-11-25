@@ -1,10 +1,9 @@
 import TodoItem from "../components/TodoItem";
-import type { Todo } from "../App";
+import type { Todo, NewTodo } from "../App";
 
 interface TodosProps {
   todos: Todo[];
-
-  addTodos: (data: Pick<Todo, "title" | "description">) => void;
+  addTodos: (data: NewTodo) => void;
   deleteTodo: (todoId: number) => void;
   completeTodo: (todoId: number) => void;
 }
@@ -12,11 +11,10 @@ interface TodosProps {
 function Home({ todos, deleteTodo, completeTodo }: TodosProps) {
   return (
     <ul>
-      {todos.map((todo, index) => (
+      {todos.map((todo) => (
         <TodoItem
           key={todo.todoId}
           todo={todo}
-          index={index}
           deleteTodo={deleteTodo}
           completeTodo={completeTodo}
         />

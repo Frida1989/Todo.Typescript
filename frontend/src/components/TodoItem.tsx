@@ -1,11 +1,13 @@
 import type { Todo } from "../App";
 
 interface TodoItemProps {
+  // One Todo object, not an array
   todo: Todo;
   deleteTodo: (todoId: number) => void;
   completeTodo: (todoId: number) => void;
 }
 
+// Receive props from Home
 function TodoItem({ todo, deleteTodo, completeTodo }: TodoItemProps) {
   return (
     <li className="todo-item">
@@ -19,10 +21,8 @@ function TodoItem({ todo, deleteTodo, completeTodo }: TodoItemProps) {
         <h2 className={todo.completed ? "completed" : "not-completed"}>
           {todo.title}
         </h2>
-
         {!todo.completed && <p>{todo.description}</p>}
       </div>
-
       <button onClick={() => deleteTodo(todo.todoId)}>X</button>
     </li>
   );
